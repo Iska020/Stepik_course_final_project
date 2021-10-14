@@ -20,7 +20,8 @@ def test_guest_should_see_login_link(browser):
     page.should_be_login_link()
 
 def test_guest_should_see_login_form_and_registration_form(browser):
-    page = LoginPage(browser=browser, url=link)
+    page = MainPage(browser=browser, url=link)
     page.open()
     page.go_to_login_page()
-    page.should_be_login_page()
+    login_page = LoginPage(browser=browser, url=browser.current_url)
+    login_page.should_be_login_page()
