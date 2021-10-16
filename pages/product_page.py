@@ -38,4 +38,10 @@ class ProductPage(BasePage):
         assert price_of_the_basket.text == self.price_of_the_product_on_the_product_page_text, \
             'Prices of the basket and the product are not equal'
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
 
+    def should_not_be_success_message_after_some_time(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"

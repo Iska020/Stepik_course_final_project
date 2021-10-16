@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
-class MainPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+#class MainPageLocators():
+    #LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
 
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
@@ -15,3 +15,6 @@ class ProductPageLocators():
    BASKET_PRICE_MESSAGE = (By.CSS_SELECTOR, ".alertinner p:nth-child(1)")
    PRICE_OF_THE_PRODUCT_ON_THE_PRODUCT_PAGE =(By.CSS_SELECTOR, "p.price_color")
    PRICE_OF_THE_BASKET_AFTER_ADDITION = (By.CSS_SELECTOR, ".alertinner p strong")
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
