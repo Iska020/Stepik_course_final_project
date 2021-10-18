@@ -21,7 +21,6 @@ class TestLoginFromMainPage():
         page.open()
         page.should_be_login_link()
 
-@pytest.mark.skip
 def test_guest_should_see_login_form_and_registration_form(browser):
     page = MainPage(browser=browser, url=link)
     page.open()
