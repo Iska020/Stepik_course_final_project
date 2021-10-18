@@ -5,20 +5,21 @@ from .pages.basket_page import BasketPage
 
 link = "http://selenium1py.pythonanywhere.com/"
 
-@pytest.mark.skip
-def test_guest_can_go_to_login_page(browser):
-    # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-    page = MainPage(browser=browser, url=link)
-    # открываем страницу
-    page.open()
-    # выполняем метод страницы — переходим на страницу логина
-    page.go_to_login_page()
+@pytest.mark.login_guest
+class TestLoginFromMainPage():
+    # не забываем передать первым аргументом self
+    def test_guest_can_go_to_login_page(self, browser):
+        # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
+        page = MainPage(browser=browser, url=link)
+        # открываем страницу
+        page.open()
+        # выполняем метод страницы — переходим на страницу логина
+        page.go_to_login_page()
 
-@pytest.mark.skip
-def test_guest_should_see_login_link(browser):
-    page = MainPage(browser=browser, url=link)
-    page.open()
-    page.should_be_login_link()
+    def test_guest_should_see_login_link(self, browser):
+        page = MainPage(browser=browser, url=link)
+        page.open()
+        page.should_be_login_link()
 
 @pytest.mark.skip
 def test_guest_should_see_login_form_and_registration_form(browser):
