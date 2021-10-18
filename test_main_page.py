@@ -35,12 +35,3 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     page.go_to_basket_page()
     page.check_the_basket_is_empty()
     page.check_the_presence_of_message_about_empty_basket()
-
-def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
-    link = "https://selenium1py.pythonanywhere.com/catalogue/hacking-exposed-wireless_208/"
-    page = BasketPage(browser=browser, url=link)
-    page.open()
-    page.should_be_basket_link()
-    page.go_to_basket_page()
-    page.check_the_basket_is_empty()
-    page.check_the_presence_of_message_about_empty_basket()

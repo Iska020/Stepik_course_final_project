@@ -1,11 +1,13 @@
 import pytest
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
+from .pages.basket_page import BasketPage
 
 link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
 bugged_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7'
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('link_of_the_site_with_promo_action',
          ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
           "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
@@ -52,6 +54,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
@@ -75,6 +78,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link ="http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser=browser, url=link)
@@ -85,3 +89,13 @@ class TestUserAddToBasketFromProductPage():
         page.add_the_product_to_the_basket()
         page.solve_quiz_and_get_code()
         page.check_the_product_was_successfully_added_to_the_basket()
+
+@pytest.mark.need_review
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "https://selenium1py.pythonanywhere.com/catalogue/hacking-exposed-wireless_208/"
+    page = BasketPage(browser=browser, url=link)
+    page.open()
+    page.should_be_basket_link()
+    page.go_to_basket_page()
+    page.check_the_basket_is_empty()
+    page.check_the_presence_of_message_about_empty_basket()
